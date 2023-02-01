@@ -23,3 +23,21 @@
   background-color: #196c84;
   color: white;
 }
+
+.conge-status {
+  display: flex;
+  gap: 1rem;
+}
+.conge-card {
+  border: 1px solid #c5c5c5;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px 0px #e5e5e5;
+  padding: 1rem;
+}
+.conge-card p:first-child {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 1px solid #c5c5c5;
+  text-align: center;
+  padding-bottom: 0.5rem;
+}

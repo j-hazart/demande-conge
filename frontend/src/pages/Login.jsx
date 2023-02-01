@@ -12,12 +12,12 @@ function Login() {
       email.current.value === "boss@mail.fr" &&
       password.current.value === "boss"
     ) {
-      navigate(`/acceuil/patron`);
+      navigate(`/acceuil?status=patron&id=1`);
     } else if (
       email.current.value === "johndoe@mail.fr" &&
       password.current.value === "doe"
     ) {
-      navigate(`/acceuil/employe`);
+      navigate(`/acceuil?status=employe&id=2`);
     } else {
       console.warn("no matching result");
     }
