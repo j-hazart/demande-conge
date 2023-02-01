@@ -1,0 +1,25 @@
+@import "rsuite/dist/rsuite.css";
+
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.login h1 {
+  color: #196c84;
+}
+
+.login-form {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-btn {
+  background-color: #196c84;
+  color: white;
+}
