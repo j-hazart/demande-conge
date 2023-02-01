@@ -1,50 +1,51 @@
-import { useRef, useState } from "react";
-import { Form, Button } from "rsuite";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const email = useRef();
   const password = useRef();
 
-  function handleSubmit() {}
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (
+      email.current.value === "boss@mail.fr" &&
+      password.current.value === "boss"
+    ) {
+      navigate(`/acceuil/patron`);
+    } else if (
+      email.current.value === "johndoe@mail.fr" &&
+      password.current.value === "doe"
+    ) {
+      navigate(`/acceuil/employe`);
+    } else {
+      console.warn("no matching result");
+    }
+  }
   return (
     <main className="login">
       <h1>Connexion</h1>
-      <Form
-        layout="inline"
-        className="login-form"
-        onSubmit={() => {
-          handleSubmit();
-        }}
-      >
-        <Form.Group
-          controlId="email"
-          className="login-form-group"
-          ref={password}
-        >
-          <Form.ControlLabel>Adresse e-mail</Form.ControlLabel>
-          <Form.Control
-            value={email}
-            placeholder="adresse e-mail"
-            name="email"
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <div className="login-form-group">
+          <label htmlFor="email">Adresse email</label>
+          <input
             type="email"
-            onChange={() => setEmail(email.target.value)}
+            name="email"
+            placeholder="adresse email"
+            ref={email}
           />
-        </Form.Group>
-
-        <Form.Group controlId="password" className="login-form-group">
-          <Form.ControlLabel>Mot de passe</Form.ControlLabel>
-          <Form.Control
-            placeholder="mot de passe"
-            name="password"
+        </div>
+        <div className="login-form-group">
+          <label htmlFor="password">Mot de passe</label>
+          <input
             type="password"
-            autoComplete="off"
+            name="password"
+            placeholder="mot de passe"
+            ref={password}
           />
-        </Form.Group>
-
-        <Button className="login-form-btn" type="submit">
-          Se connecter
-        </Button>
-      </Form>
+        </div>
+        <button type="submit">Se connecter</button>
+      </form>
     </main>
   );
 }
