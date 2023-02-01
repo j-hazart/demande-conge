@@ -1,5 +1,18 @@
 @import "rsuite/dist/rsuite.css";
 
+header {
+  padding: 1rem;
+  text-align: center;
+  color: #196c84;
+}
+.form-conge {
+  display: flex;
+  justify-content: center;
+}
+.form-button {
+  background-color: #196c84;
+  color: white;
+}
 .login {
   height: 100vh;
   display: flex;
@@ -26,13 +39,17 @@
 
 .conge-status {
   display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 1rem;
+  color: #196c84;
 }
 .conge-card {
-  border: 1px solid #c5c5c5;
+  border: 1px solid #196c84;
   border-radius: 5px;
   box-shadow: 2px 2px 3px 0px #e5e5e5;
   padding: 1rem;
+  color: #196c84;
 }
 .conge-card p:first-child {
   text-transform: uppercase;

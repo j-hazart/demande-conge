@@ -1,5 +1,6 @@
 import { Panel, PanelGroup } from "rsuite";
 import Header from "../components/Header";
+import Formulaire from "../components/Formulaire";
 import CongeSection from "../components/Conges/CongeSection";
 
 function Home() {
@@ -36,15 +37,16 @@ function Home() {
   return (
     <>
       <Header />
+      <Formulaire />
       <main>
         <PanelGroup>
-          <Panel header="En Attente">
+          <Panel header="En Attente" collapsible="true">
             <CongeSection status="attente" conges={conges} />
           </Panel>
-          <Panel header="Validé">
+          <Panel header="Validé" collapsible="true">
             <CongeSection status="valide" conges={conges} />
           </Panel>
-          <Panel header="Refusé">
+          <Panel header="Refusé" collapsible="true">
             <CongeSection status="refus" conges={conges} />
           </Panel>
         </PanelGroup>

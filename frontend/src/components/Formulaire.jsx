@@ -25,7 +25,7 @@ function Formulaire() {
     setOpen(true);
   };
   return (
-    <>
+    <div className="form-conge">
       <Modal open={open} onClose={handleClose} size="xs">
         <Modal.Header>
           <Modal.Title>Nouvelle demande de congés</Modal.Title>
@@ -57,8 +57,10 @@ function Formulaire() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Button onClick={handleOpen}>Poser des congés</Button>
-    </>
+      <Button className="form-button" onClick={handleOpen}>
+        Poser des congés
+      </Button>
+    </div>
   );
 }
 
