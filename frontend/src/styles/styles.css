@@ -1,5 +1,7 @@
 @import "rsuite/dist/rsuite.css";
-
+body {
+  background-color: whitesmoke;
+}
 header {
   padding: 1rem;
   text-align: center;
@@ -39,17 +41,20 @@ header {
 
 .conge-status {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
   color: #196c84;
 }
 .conge-card {
+  background-color: #196c84;
   border: 1px solid #196c84;
   border-radius: 5px;
   box-shadow: 2px 2px 3px 0px #e5e5e5;
   padding: 1rem;
-  color: #196c84;
+  color: white;
+  flex-grow: 1;
+  text-align: center;
 }
 .conge-card p:first-child {
   text-transform: uppercase;

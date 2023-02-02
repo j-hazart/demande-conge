@@ -3,11 +3,11 @@ CREATE TABLE user (
   prenom varchar(255) NOT NULL,
   nom varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
-  mdp varchar(255) NOT NULL,
+  password varchar(255) NOT NULL,
   role varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO user (prenom, nom, email, mdp, role) VALUES
+INSERT INTO user (prenom, nom, email, password, role) VALUES
 ("Le", "Boss", "boss@mail.fr", "boss", "patron"),
 ("John", "Doe", "johndoe@mail.fr", "doe", "employe"),
 ("Mouns", "Ito", "mouns@mail.fr", "mouns", "employe");

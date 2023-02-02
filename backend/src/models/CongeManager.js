@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class ItemManager extends AbstractManager {
+class CongeManager extends AbstractManager {
   constructor() {
     super({ table: "conge" });
   }
@@ -26,4 +26,4 @@ class ItemManager extends AbstractManager {
   }
 }
 
-module.exports = ItemManager;
+module.exports = CongeManager;
