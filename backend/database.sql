@@ -9,7 +9,8 @@ CREATE TABLE user (
 
 INSERT INTO user (prenom, nom, email, mdp, role) VALUES
 ("Le", "Boss", "boss@mail.fr", "boss", "patron"),
-("John", "Doe", "johndoe@mail.fr", "doe", "employe");
+("John", "Doe", "johndoe@mail.fr", "doe", "employe"),
+("Mouns", "Ito", "mouns@mail.fr", "mouns", "employe");
 
 CREATE TABLE conge (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -23,4 +24,6 @@ CREATE TABLE conge (
 INSERT INTO conge (dateDebut, dateFin, statut, user_id) VALUES
 ("2023-03-15", "2023-04-15", "attente", 2),
 ("2023-02-15", "2023-02-25", "valide", 2),
-("2023-02-10", "2023-03-11", "refus", 2);
+("2023-02-10", "2023-03-11", "refus", 2),
+("2023-06-08","2023-07-30","refus", 2),
+("2023-06-30","2023-07-08","attente",3);

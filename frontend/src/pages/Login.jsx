@@ -11,12 +11,12 @@ function Login() {
 
   function handleSubmit() {
     if (formValue.email === "boss@mail.fr" && formValue.password === "boss") {
-      navigate(`/accueil?status=patron&id=1`);
+      navigate(`/accueil?status=patron&userId=1`);
     } else if (
       formValue.email === "johndoe@mail.fr" &&
       formValue.password === "doe"
     ) {
-      navigate(`/accueil?status=employe&id=2`);
+      navigate(`/accueil?status=employe&userId=2`);
     } else {
       console.warn("no matching result");
     }

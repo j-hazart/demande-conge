@@ -58,3 +58,11 @@ header {
   text-align: center;
   padding-bottom: 0.5rem;
 }
+
+.button-choice {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  color: white;
+}

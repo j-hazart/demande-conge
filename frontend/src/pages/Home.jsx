@@ -1,53 +1,57 @@
 import { Panel, PanelGroup } from "rsuite";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
 import Header from "../components/Header";
 import Formulaire from "../components/Formulaire";
 import CongeSection from "../components/Conges/CongeSection";
 
 function Home() {
-  const conges = [
-    {
-      id: 1,
-      start: "12-02-2023",
-      end: "12-03-2023",
-      name: "John Doe",
-      status: "attente",
-    },
-    {
-      id: 2,
-      start: "25-01-2023",
-      end: "18-02-2023",
-      name: "John Doe",
-      status: "valide",
-    },
-    {
-      id: 3,
-      start: "04-05-2023",
-      end: "24-05-2023",
-      name: "John Doe",
-      status: "refus",
-    },
-    {
-      id: 4,
-      start: "08-06-2023",
-      end: "30-07-2023",
-      name: "John Doe",
-      status: "refus",
-    },
-  ];
+  const { search } = useLocation();
+  const status = useMemo(() => new URLSearchParams(search), [search]).get(
+    "status"
+  );
+  const userId = useMemo(() => new URLSearchParams(search), [search]).get(
+    "userId"
+  );
+
+  const [conges, setConges] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/conges`)
+      .then((data) => setConges(data.data));
+  }, []);
+
   return (
     <>
       <Header />
       <Formulaire />
       <main>
         <PanelGroup>
-          <Panel header="En Attente" collapsible="true">
-            <CongeSection status="attente" conges={conges} />
+          <Panel header="En Attente">
+            <CongeSection
+              status="attente"
+              conges={conges}
+              userId={userId}
+              userStatus={status}
+            />
           </Panel>
-          <Panel header="Validé" collapsible="true">
-            <CongeSection status="valide" conges={conges} />
+          <Panel header="Validé">
+            <CongeSection
+              status="valide"
+              conges={conges}
+              userId={userId}
+              userStatus={status}
+            />
           </Panel>
-          <Panel header="Refusé" collapsible="true">
-            <CongeSection status="refus" conges={conges} />
+          <Panel header="Refusé">
+            <CongeSection
+              status="refus"
+              conges={conges}
+              userId={userId}
+              userStatus={status}
+            />
           </Panel>
         </PanelGroup>
       </main>
