@@ -1,51 +1,64 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Form, Button } from "rsuite";
 
 function Login() {
   const navigate = useNavigate();
-  const email = useRef();
-  const password = useRef();
+  const [formValue, setFormValue] = useState({
+    email: "",
+    password: "",
+  });
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (
-      email.current.value === "boss@mail.fr" &&
-      password.current.value === "boss"
-    ) {
-      navigate(`/acceuil?status=patron&id=1`);
+  function handleSubmit() {
+    if (formValue.email === "boss@mail.fr" && formValue.password === "boss") {
+      navigate(`/accueil?status=patron&id=1`);
     } else if (
-      email.current.value === "johndoe@mail.fr" &&
-      password.current.value === "doe"
+      formValue.email === "johndoe@mail.fr" &&
+      formValue.password === "doe"
     ) {
-      navigate(`/acceuil?status=employe&id=2`);
+      navigate(`/accueil?status=employe&id=2`);
     } else {
       console.warn("no matching result");
     }
   }
+
   return (
     <main className="login">
       <h1>Connexion</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="login-form-group">
-          <label htmlFor="email">Adresse email</label>
-          <input
-            type="email"
+      <Form
+        layout="inline"
+        className="login-form"
+        onChange={setFormValue}
+        formValue={formValue}
+      >
+        <Form.Group controlId="email" className="login-form-group">
+          <Form.ControlLabel>Adresse e-mail</Form.ControlLabel>
+          <Form.Control
+            placeholder="adresse e-mail"
             name="email"
-            placeholder="adresse email"
-            ref={email}
+            type="email"
           />
-        </div>
-        <div className="login-form-group">
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
+        </Form.Group>
+
+        <Form.Group controlId="password" className="login-form-group">
+          <Form.ControlLabel>Mot de passe</Form.ControlLabel>
+          <Form.Control
             placeholder="mot de passe"
-            ref={password}
+            name="password"
+            type="password"
+            autoComplete="off"
           />
-        </div>
-        <button type="submit">Se connecter</button>
-      </form>
+        </Form.Group>
+
+        <Button
+          className="login-form-btn"
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          Se connecter
+        </Button>
+      </Form>
     </main>
   );
 }
