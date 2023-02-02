@@ -3,7 +3,7 @@ import { Form, Button, Modal } from "rsuite";
 import { useState } from "react";
 import axios from "axios";
 
-function Formulaire({ userId, setSend }) {
+function Formulaire({ userId }) {
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -22,9 +22,7 @@ function Formulaire({ userId, setSend }) {
     setOpen(false);
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/conges`, formValue)
-      .then((res) => console.warn(res));
-
-    setSend((old) => !old);
+      .then(window.location.reload());
   };
   const handleClose = () => {
     setOpen(false);
@@ -78,7 +76,6 @@ function Formulaire({ userId, setSend }) {
 
 Formulaire.propTypes = {
   userId: PropTypes.string.isRequired,
-  setSend: PropTypes.func.isRequired,
 };
 
 export default Formulaire;
