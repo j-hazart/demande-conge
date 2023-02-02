@@ -55,6 +55,7 @@ header {
   color: white;
   flex-grow: 1;
   text-align: center;
+  min-width: 200px;
 }
 .conge-card p:first-child {
   text-transform: uppercase;
@@ -70,4 +71,15 @@ header {
   gap: 0.5rem;
   margin-top: 0.5rem;
   color: white;
+}
+
+@media only screen and (min-width: 600px) {
+  .conge-card {
+    flex-grow: 0;
+    font-size: 1rem;
+  }
+  .conge-status {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }
