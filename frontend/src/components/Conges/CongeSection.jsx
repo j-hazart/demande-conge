@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import CongeCard from "./CongeCard";
 
-function CongeSection({ status, conges, userId, userStatus }) {
+function CongeSection({ status, conges, userId, userStatus, setSend }) {
   function verifyStatus(statusUser) {
     if (statusUser === "employe") {
       return conges.filter(
@@ -16,7 +16,13 @@ function CongeSection({ status, conges, userId, userStatus }) {
   return (
     <section className="conge-status">
       {verifyStatus(userStatus).map((conge) => (
-        <CongeCard conge={conge} userStatus={userStatus} status={status} />
+        <CongeCard
+          key={conge.id}
+          conge={conge}
+          userStatus={userStatus}
+          status={status}
+          setSend={setSend}
+        />
       ))}
     </section>
   );
@@ -35,6 +41,7 @@ CongeSection.propTypes = {
   ).isRequired,
   userId: PropTypes.string.isRequired,
   userStatus: PropTypes.string.isRequired,
+  setSend: PropTypes.func.isRequired,
 };
 
 export default CongeSection;

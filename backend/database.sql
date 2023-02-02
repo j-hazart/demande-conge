@@ -16,7 +16,7 @@ CREATE TABLE conge (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   dateDebut date NOT NULL,
   dateFin date NOT NULL,
-  statut varchar(10) NOT NULL,
+  statut varchar(10) NOT NULL default "attente",
   user_id int(11) unsigned NOT NULL,
   constraint conge_user foreign key (user_id) references user(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -1,7 +1,9 @@
+import PropTypes from "prop-types";
 import { Form, Button, Modal } from "rsuite";
 import { useState } from "react";
+import axios from "axios";
 
-function Formulaire() {
+function Formulaire({ userId, setSend }) {
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -11,12 +13,18 @@ function Formulaire() {
 
   const [open, setOpen] = useState(false);
   const [formValue, setFormValue] = useState({
-    start: "",
-    end: "",
+    dateDebut: "",
+    dateFin: "",
+    userId,
   });
 
   const handleSubmit = () => {
     setOpen(false);
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/conges`, formValue)
+      .then((res) => console.warn(res));
+
+    setSend((old) => !old);
   };
   const handleClose = () => {
     setOpen(false);
@@ -32,17 +40,21 @@ function Formulaire() {
         </Modal.Header>
         <Modal.Body>
           <Form fluid onChange={setFormValue} formValue={formValue}>
-            <Form.Group controlId="start">
+            <Form.Group controlId="dateDebut">
               <Form.ControlLabel>Début des congés</Form.ControlLabel>
-              <Form.Control name="start" type="date" min={minDate} />
+              <Form.Control name="dateDebut" type="date" min={minDate} />
               <Form.HelpText>Une date de début est requis</Form.HelpText>
             </Form.Group>
-            <Form.Group controlId="end">
+            <Form.Group controlId="dateFin">
               <Form.ControlLabel>Fin des congés</Form.ControlLabel>
               <Form.Control
-                name="end"
+                name="dateFin"
                 type="date"
-                min={formValue.start.length <= 0 ? minDate : formValue.start}
+                min={
+                  formValue.dateDebut.length <= 0
+                    ? minDate
+                    : formValue.dateDebut
+                }
               />
               <Form.HelpText>Une date de fin est requis</Form.HelpText>
             </Form.Group>
@@ -63,5 +75,10 @@ function Formulaire() {
     </div>
   );
 }
+
+Formulaire.propTypes = {
+  userId: PropTypes.string.isRequired,
+  setSend: PropTypes.func.isRequired,
+};
 
 export default Formulaire;

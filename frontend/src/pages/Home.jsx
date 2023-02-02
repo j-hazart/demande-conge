@@ -16,17 +16,19 @@ function Home() {
   );
 
   const [conges, setConges] = useState([]);
+  const [send, setSend] = useState(true);
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/conges`)
       .then((data) => setConges(data.data));
-  }, []);
-
+  }, [send]);
   return (
     <>
       <Header />
-      <Formulaire />
+      {status === "employe" && (
+        <Formulaire userId={userId} send={send} setSend={setSend} />
+      )}
       <main>
         <PanelGroup>
           <Panel header="En Attente">
@@ -35,6 +37,7 @@ function Home() {
               conges={conges}
               userId={userId}
               userStatus={status}
+              setSend={setSend}
             />
           </Panel>
           <Panel header="Validé">

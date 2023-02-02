@@ -12,5 +12,7 @@ router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
 router.get("/conges", congeControllers.browse);
+router.put("/conges/:id", congeControllers.edit);
+router.post("/conges", congeControllers.add);
 
 module.exports = router;
