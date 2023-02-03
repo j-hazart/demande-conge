@@ -2,18 +2,18 @@ import { Button } from "rsuite";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-function CongeCard({ conge, userStatus, status, setIsSend, userId }) {
+function CongeCard({ conge, userStatus, status, fetchData, userId }) {
   function makeChoice(choice) {
     axios
       .put(`${import.meta.env.VITE_BACKEND_URL}/conges/${conge.id}`, {
         statut: choice,
       })
-      .then(setIsSend((old) => !old));
+      .then(fetchData());
   }
   function deleteConge() {
     axios
       .delete(`${import.meta.env.VITE_BACKEND_URL}/conges/${conge.id}`)
-      .then(setIsSend((old) => !old));
+      .then(fetchData());
   }
   return (
     <div className="conge-card">
@@ -56,12 +56,12 @@ CongeCard.propTypes = {
     userId: PropTypes.number,
   }).isRequired,
   userStatus: PropTypes.string.isRequired,
-  setIsSend: PropTypes.func,
+  fetchData: PropTypes.func,
   userId: PropTypes.number.isRequired,
 };
 
 CongeCard.defaultProps = {
-  setIsSend: undefined,
+  fetchData: undefined,
 };
 
 export default CongeCard;

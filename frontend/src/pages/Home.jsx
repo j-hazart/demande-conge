@@ -15,18 +15,21 @@ function Home() {
   }
 
   const [conges, setConges] = useState([]);
-  const [isSend, setIsSend] = useState(true);
 
-  useEffect(() => {
+  function fetchData() {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/conges`).then((data) => {
       setConges(data.data);
     });
-  }, [isSend]);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
       <Header />
       {auth.role === "employe" && (
-        <Formulaire userId={auth.id} setIsSend={setIsSend} />
+        <Formulaire userId={auth.id} fetchData={fetchData()} />
       )}
       <main>
         <PanelGroup>
@@ -36,7 +39,7 @@ function Home() {
               conges={conges}
               userId={auth.id}
               userStatus={auth.role}
-              setIsSend={setIsSend}
+              fetchData={fetchData()}
             />
           </Panel>
           <Panel header="Validé">
@@ -53,7 +56,7 @@ function Home() {
               conges={conges}
               userId={auth.id}
               userStatus={auth.role}
-              setIsSend={setIsSend}
+              fetchData={fetchData()}
             />
           </Panel>
         </PanelGroup>

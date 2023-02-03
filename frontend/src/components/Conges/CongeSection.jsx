@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import CongeCard from "./CongeCard";
 
-function CongeSection({ status, conges, userId, userStatus, setIsSend }) {
+function CongeSection({ status, conges, userId, userStatus, fetchData }) {
   function verifyStatus(statusUser) {
     if (statusUser === "employe") {
       return conges.filter(
@@ -21,7 +21,7 @@ function CongeSection({ status, conges, userId, userStatus, setIsSend }) {
           conge={conge}
           userStatus={userStatus}
           status={status}
-          setIsSend={setIsSend}
+          fetchData={fetchData}
           userId={userId}
         />
       ))}
@@ -42,11 +42,11 @@ CongeSection.propTypes = {
   ).isRequired,
   userId: PropTypes.number.isRequired,
   userStatus: PropTypes.string.isRequired,
-  setIsSend: PropTypes.func,
+  fetchData: PropTypes.func,
 };
 
 CongeSection.defaultProps = {
-  setIsSend: undefined,
+  fetchData: undefined,
 };
 
 export default CongeSection;
