@@ -22,6 +22,7 @@ function CongeSection({ status, conges, userId, userStatus, setIsSend }) {
           userStatus={userStatus}
           status={status}
           setIsSend={setIsSend}
+          userId={userId}
         />
       ))}
     </section>
@@ -41,7 +42,11 @@ CongeSection.propTypes = {
   ).isRequired,
   userId: PropTypes.number.isRequired,
   userStatus: PropTypes.string.isRequired,
-  setIsSend: PropTypes.func.isRequired,
+  setIsSend: PropTypes.func,
+};
+
+CongeSection.defaultProps = {
+  setIsSend: undefined,
 };
 
 export default CongeSection;

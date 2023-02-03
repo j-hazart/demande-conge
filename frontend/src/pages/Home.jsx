@@ -53,6 +53,7 @@ function Home() {
               conges={conges}
               userId={auth.id}
               userStatus={auth.role}
+              setIsSend={setIsSend}
             />
           </Panel>
         </PanelGroup>
